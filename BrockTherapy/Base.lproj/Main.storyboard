@@ -15,29 +15,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgU-kP-zrB">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgU-kP-zrB">
                                 <rect key="frame" x="57" y="298" width="300" height="300"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.7803921568627451" green="0.0" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="2zP-Hc-yHQ"/>
                                     <constraint firstAttribute="height" constant="300" id="FJK-QS-YKv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <state key="normal" title="Hold the 'X'">
+                                <state key="normal" title="Ready...">
                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonDown:" destination="BYZ-38-t0r" eventType="touchDown" id="09v-Ja-FOR"/>
+                                    <action selector="buttonUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JpI-xX-IKb"/>
+                                    <action selector="buttonUp:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="ce8-7u-PY4"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJO-c8-nMe">
+                                <rect key="frame" x="149" y="528" width="116" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.11372549019607843" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="cgU-kP-zrB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KKY-eH-fGl"/>
+                            <constraint firstItem="HJO-c8-nMe" firstAttribute="leading" secondItem="cgU-kP-zrB" secondAttribute="leading" constant="92" id="1sD-70-n7X"/>
+                            <constraint firstItem="cgU-kP-zrB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cws-1p-vO6"/>
+                            <constraint firstItem="HJO-c8-nMe" firstAttribute="top" secondItem="cgU-kP-zrB" secondAttribute="top" constant="230" id="R9u-4v-Qvr"/>
+                            <constraint firstItem="cgU-kP-zrB" firstAttribute="bottom" secondItem="HJO-c8-nMe" secondAttribute="bottom" constant="40" id="dzc-lT-zGY"/>
                             <constraint firstItem="cgU-kP-zrB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lOz-Ui-qSb"/>
+                            <constraint firstItem="cgU-kP-zrB" firstAttribute="trailing" secondItem="HJO-c8-nMe" secondAttribute="trailing" constant="92" id="xq0-b5-q3I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="holdButton" destination="cgU-kP-zrB" id="w1f-34-AO6"/>
+                        <outlet property="holdButton" destination="cgU-kP-zrB" id="kO2-yf-oUS"/>
+                        <outlet property="holdTimeLabel" destination="HJO-c8-nMe" id="NK3-PU-NCM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
