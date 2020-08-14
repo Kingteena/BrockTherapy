@@ -26,9 +26,9 @@
                                     <constraint firstAttribute="height" constant="300" id="FJK-QS-YKv"/>
                                     <constraint firstAttribute="width" constant="300" id="LLF-lI-ejL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                 <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <state key="normal" title="Hold the 'X'">
+                                <state key="normal" title="butch">
                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
                                 <connections>
@@ -128,10 +128,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <datePicker opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" countDownDuration="1200" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgW-Gl-XMC">
-                                <rect key="frame" x="47" y="296" width="320" height="216"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVs-zP-xs8">
                                 <rect key="frame" x="107" y="641" width="203" height="30"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.4431372549" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -142,20 +138,33 @@
                                     <action selector="doneButtonPressed:" destination="4tA-GL-C1P" eventType="touchUpInside" id="fIu-zq-CjK"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daD-8w-lUd">
+                                <rect key="frame" x="47" y="296" width="320" height="216"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many minutes do you want to do the exersice?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIi-6E-lMH">
+                                <rect key="frame" x="20" y="186" width="374" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.7803921568627451" green="0.0" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ZgW-Gl-XMC" firstAttribute="centerY" secondItem="izy-Dp-PQI" secondAttribute="centerY" id="3gH-Bn-mXC"/>
                             <constraint firstItem="eVs-zP-xs8" firstAttribute="leading" secondItem="ocg-UJ-vmX" secondAttribute="leading" constant="107" id="C5D-Xk-22c"/>
                             <constraint firstItem="ocg-UJ-vmX" firstAttribute="trailing" secondItem="eVs-zP-xs8" secondAttribute="trailing" constant="104" id="JBV-Sy-rA8"/>
-                            <constraint firstItem="ZgW-Gl-XMC" firstAttribute="centerX" secondItem="izy-Dp-PQI" secondAttribute="centerX" id="oZO-Kj-Kyl"/>
-                            <constraint firstItem="eVs-zP-xs8" firstAttribute="top" secondItem="ZgW-Gl-XMC" secondAttribute="bottom" constant="129" id="oyq-aU-ZUZ"/>
+                            <constraint firstItem="daD-8w-lUd" firstAttribute="centerX" secondItem="izy-Dp-PQI" secondAttribute="centerX" id="MkO-9X-7v7"/>
+                            <constraint firstItem="daD-8w-lUd" firstAttribute="top" secondItem="fIi-6E-lMH" secondAttribute="bottom" constant="50" id="No2-8G-yAt"/>
+                            <constraint firstItem="daD-8w-lUd" firstAttribute="centerY" secondItem="izy-Dp-PQI" secondAttribute="centerY" id="VR3-1q-z3T"/>
+                            <constraint firstItem="ocg-UJ-vmX" firstAttribute="trailing" secondItem="fIi-6E-lMH" secondAttribute="trailing" constant="20" id="ZWd-cL-uNQ"/>
+                            <constraint firstItem="fIi-6E-lMH" firstAttribute="leading" secondItem="ocg-UJ-vmX" secondAttribute="leading" constant="20" id="bWq-zr-LEx"/>
+                            <constraint firstItem="eVs-zP-xs8" firstAttribute="top" secondItem="daD-8w-lUd" secondAttribute="bottom" constant="129" id="oyq-aU-ZUZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ocg-UJ-vmX"/>
                     </view>
                     <navigationItem key="navigationItem" id="i3g-D8-7sO"/>
                     <connections>
-                        <outlet property="timePicker" destination="ZgW-Gl-XMC" id="bGF-Sy-45z"/>
+                        <outlet property="label" destination="fIi-6E-lMH" id="BPX-Zw-cf9"/>
+                        <outlet property="stareTimePicker" destination="daD-8w-lUd" id="hFo-Mp-duU"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="TimerToHold" id="QfZ-2m-jEP"/>
                     </connections>
                 </viewController>

@@ -21,7 +21,7 @@ class HoldViewController: UIViewController {
     var holdingTime = 10 // The time left to hold
     var stareTimeSecond = 0
     var stareToBeStarted = true
-    var stareTimeMinute = 20
+    var stareTimeMinute : Int?
     
     
     
@@ -34,9 +34,10 @@ class HoldViewController: UIViewController {
         holdButton.layer.borderWidth = 1.0
         holdButton.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         holdButton.clipsToBounds = true
+        holdButton.titleLabel?.textAlignment = .center
         
         stareTimeLabel.text = "Press the button to start"    //Test code to make sure it works
-        holdButton.titleLabel?.text = "Ready.."  //Change the text of the button
+        holdButton.setTitle("Ready..", for: .normal)  //Change the text of the button
 
     }
     
@@ -46,14 +47,15 @@ class HoldViewController: UIViewController {
             self.stareTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true)
         }
         buttonTouch()   // Trigger this once
-        holdButton.titleLabel?.text = "Hold the 'X'"  //Change the text of the button
+        holdButton.setTitle("Hold the 'X'", for: .normal) //Change the text of the button
         holdTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(buttonHold), userInfo: nil, repeats: true)   //Make a timer that will repeat function 'buttonHold'
     }
     
     @IBAction func buttonUp(_ sender: UIButton) {  // When the user lifts his/her finger from the button...
         holdTimeLabel.alpha = 0  // Make the Label dissapear (Transparent)
         holdTimer?.invalidate()  // Invalidate (Cancel) the timer
-        holdButton.titleLabel?.text = "Ready.."  //Change the text of the button
+         //Change the text of the button
+        holdButton.setTitle("Ready..", for: .normal)
     }
     
     
@@ -61,8 +63,9 @@ class HoldViewController: UIViewController {
         
         holdTimeLabel.alpha = 1  //Label can be seen...
         holdTimeLabel.text = "10"  //...with this content
-        holdButton.titleLabel?.text = "Hold the 'X'"  //Change the text of the button
+        holdButton.setTitle("Hold the 'X'", for: .normal)  //Change the text of the button
         holdingTime = 10  //Reset holding time to 10
+        holdTimer?.invalidate()
     }
     
     @objc func buttonHold() {
@@ -72,7 +75,7 @@ class HoldViewController: UIViewController {
 
         } else {
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))  //Vibrate device (Does not show on simulator/iPad)
-            holdButton.titleLabel?.text = "Done!"  //Change the text of the button
+            holdButton.setTitle("Done", for: .normal)  //Change the text of the button
             holdTimeLabel.alpha = 0  //makes the label invisible
             holdTimer?.invalidate()  //cancel timer
             
@@ -85,13 +88,13 @@ class HoldViewController: UIViewController {
         }else if stareTimeSecond == 0 && stareTimeMinute == 0{
             print("Done")
         }else{
-            stareTimeMinute -= 1
+            stareTimeMinute! -= 1
             stareTimeSecond = 59
         }
         if stareTimeMinute == 0{
             stareTimeLabel.text = "\(stareTimeSecond) seconds left"
         }else{
-            stareTimeLabel.text = "\(stareTimeMinute) minutes and \(stareTimeSecond) seconds left"
+            stareTimeLabel.text = "\(stareTimeMinute!) minutes and \(stareTimeSecond) seconds left"
         }
     }
 }
